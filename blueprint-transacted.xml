@@ -57,7 +57,7 @@
     <bean class="org.apache.camel.component.jms.JmsComponent" id="sourceAMQ">
         <property name="connectionFactory" ref="pooledConnectionFactorySource"/>
         <property name="transacted" value="true"/>
-        <property name="transactionManager" value="transactionManager"/>
+        <property name="transactionManager" ref="transactionManager"/>
     </bean>
 
     <bean class="org.apache.camel.component.jms.JmsComponent" id="targetAMQ">
@@ -65,7 +65,7 @@
     </bean>
 
     <bean class="org.springframework.jms.connection.JmsTransactionManager" id="transactionManager">
-        <property name="connectionFactory" value="pooledConnectionFactorySource"/>
+        <property name="connectionFactory" ref="pooledConnectionFactorySource"/>
     </bean>
 
     <camelContext xmlns="http://camel.apache.org/schema/blueprint">
